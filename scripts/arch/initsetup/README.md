@@ -44,3 +44,9 @@ gpg: WARNING: not a detached signature; file 'SHA256SUM' was NOT verified!
 sha256sum setup.sh && sha256sum -c SHA256SUM
 ```
 6. If the outputs looks like the inferior, youre good to go. If not, redownload and recheck or open an issue 
+
+---
+
+### **Bug Report**
+
+If you find any Bugs in this Script, feel free to open an issue 
