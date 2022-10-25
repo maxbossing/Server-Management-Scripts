@@ -1,4 +1,4 @@
-# initsetup
+# update
 
 This Script will update a GNU/Linux Arch machine for production/development use 
 > ### NOTE: This Script is only meant for use in the RedstoneGames.ch Production/Development Environment,
