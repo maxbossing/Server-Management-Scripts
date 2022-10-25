@@ -43,6 +43,10 @@ gpg: WARNING: not a detached signature; file 'SHA256SUM' was NOT verified!
 sha256sum update.sh && sha256sum -c SHA256SUM
 ```
 6. If the outputs looks like the inferior, youre good to go. If not, redownload and recheck or open an issue 
+```
+a3ff3385ee06f80f403a754270a8ff4f5b67e0e51d30f5ef8a7fe843af3471e1  update.sh
+update.sh: OK
+```
 
 ---
 
