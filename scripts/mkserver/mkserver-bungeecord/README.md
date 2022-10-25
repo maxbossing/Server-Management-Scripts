@@ -1,4 +1,4 @@
-# initsetup
+# mkserver-bungeecord
 
 This Script will setup a bungeecord instance on a GNU/Linux Arch machine for production/development use 
 > ### NOTE: This Script is only meant for use in the RedstoneGames.ch Production/Development Environment,
