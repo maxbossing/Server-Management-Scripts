@@ -33,7 +33,7 @@ gpg --verify SHA256SUM.asc
 ```
 4. If the output looks something like the inferior, continue. If not, redownload and recheck or open an issue
 ```
-gpg: Signature made Di 25 Okt 2022 21:05:09 CEST
+gpg: Signature made Di 25 Okt 2022 21:57:59 CEST
 gpg:                using RSA key 64B333550486978BF63E54E4E2E95E80A0C1217E
 gpg: Good signature from "Max Bossing <info@maxbossing.de>" [ultimate]
 gpg: WARNING: not a detached signature; file 'SHA256SUM' was NOT verified!
