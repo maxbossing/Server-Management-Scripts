@@ -25,5 +25,11 @@ The installation process is described in the README's of the directories contain
 > ### **Note:** ALWAYS check the integrity of the files by verifyng the SHA256 checksums with gpg and then comparing these to the checksum of the file, especially when using these to setup production server!
 
 ---
+
+### **Wiki**
+
+Check out the [Wiki](https://github.com/RedstoneGames-MC/Server-Management-Scripts/wiki) for in-detail explanation of verifying and using the scripts
+
+---
 ### **Bug reporting**
 if you encounter a bug, feel free to open an issue
