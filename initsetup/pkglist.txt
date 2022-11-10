@@ -1,0 +1,3 @@
+screen
+bash
+jdk-openjdk
