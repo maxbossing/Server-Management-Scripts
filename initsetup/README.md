@@ -1,56 +1,36 @@
 # initsetup
 
-This Script will setup a fresh GNU/Linux Arch machine for production/development use 
-> ### NOTE: This Script is only meant for use in the RedstoneGames.ch Production/Development Environment,
-> ### using it somewhere else could result in unexpected behavior
+Setup a new Server to ensure compatibility with the other Scripts
 
 ---
 
 ### **Usage**
 
-**Syntax** : *setup.sh [argument]*  
+**Syntax** : *setup [argument]*  
 <br>
 **Options**:
 + *--help -h*  
     > Prints Help Screen 
 + *--init -i*
-    > starts the actual setup
+    > initiates the setup
 
 ---
 
 ### **Verify the integrity of the Script**
-1. Download SHA256SUM, SHA256SUM.asc, and pub.key from the repository
-2. Import pub.key in the gpg keyring and trust it with
+
+#### **Linux**
+
+1. Execute
 ```
-gpg --import pub.key
-gpg --edit-key info@maxbossing.de
-trust
-5
-y
+sha256sum -c SHA256SUM
 ```
-3. Execute  
+2. If the outputs looks like the output below, youre good to go. If not, redownload and recheck or open an issue 
 ```
-gpg --verify SHA256SUM.asc
-```
-4. If the output looks something like the inferior, continue. If not, redownload and recheck or open an issue
-```
-gpg: Signature made Di 25 Okt 2022 21:05:09 CEST
-gpg:                using RSA key 64B333550486978BF63E54E4E2E95E80A0C1217E
-gpg: Good signature from "Max Bossing <info@maxbossing.de>" [ultimate]
-gpg: WARNING: not a detached signature; file 'SHA256SUM' was NOT verified!
-```
-5. Execute
-```
-sha256sum setup.sh && sha256sum -c SHA256SUM
-```
-6. If the outputs looks like the inferior, youre good to go. If not, redownload and recheck or open an issue 
-```
-a0f7b12867edaaa5bff9599eb41e16954bcf9cca7e9c5d3165d08e8a940af7e6  setup.sh
-setup.sh: OK
+setup: OK
 ```
 
 ---
 
 ### **Bug Report**
 
-If you find any Bugs in this Script, feel free to open an issue 
+If you find any Bugs in this Script, feel free to open an issue and/or fix it and open a Pull request

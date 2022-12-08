@@ -1,0 +1,77 @@
+#!/usr/bin/env bash
+# 
+# Setup a Server to ensure compatibility with the other scripts
+# Person in charge : Max Bossing [Max#2307, info@maxbossing.de]
+
+# Constants
+readonly LOG_FILE='/var/log/setup'
+
+# Variables
+red=$(tput setaf 1)
+green=$(tput setaf 2)
+reset=$(tput sgr 0)
+
+##################
+# Error messaging
+# Arguments:
+#   Message string 
+##################
+err() {
+    echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $red $* $reset" >&2
+    log "$*"
+    exit 1
+}
+
+##################
+# Logging
+# Arguments:
+#   Message string
+##################
+
+log() {
+    echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $*" >> LOG_FILE
+}
+
+#############
+# Help screen
+#############
+helpscreen() {
+    echo 'setup - setup a server to ensure compatibility with the other scripts'
+    echo 'Usage : setup [argument]'
+    echo ''
+    echo 'Options : '
+    echo ' --help -h    prints this Screen'
+    echo ' --init -i    initiates the Setup'
+    exit 0
+}
+
+
+
+
+main() {
+
+    # Update System
+    sudo pacman -Syyu --noconfirm || err 'Failed to update system'
+
+    log 'Update Completed successfull'
+    echo "$green update Comleted successfull $reset"
+
+    # Install Packages
+    sudo pacman -S --needed --noconfirm - < 'pkglist.txt' || err 'Failed to install Packages'
+    
+    log 'Packages installed successfull'
+    echo "$green Packages installed successfull $reset"
+
+    # done 
+    log 'Setup completed'
+    echo "$green setup completed $reset"
+    exit 0
+}
+
+if [[ "$1" == '--init' ]] || [[ "$1" == '-i' ]]; then
+main
+else 
+helpscreen
+fi
+
+
