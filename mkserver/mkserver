@@ -13,8 +13,8 @@ from datetime import datetime
 
 # TODO : Add Progress Bar while downloading server.jar
 # TODO : Add flag to change server.jar name
-# TODO : Add automated eula accepting
 # TODO : automatic adding of executable flag to start
+# TODO : Check for M/G at the end of --min or --max  
 
 # Globals
 
@@ -114,8 +114,8 @@ def main():
     parser.add_argument('name')
     parser.add_argument('path')
     parser.add_argument('software', choices=software)
-    parser.add_argument('--min', type=int, required=True, help='Minimal amount of RAM')
-    parser.add_argument('--max', type=int, required=True, help='Maximal amount of RAM')
+    parser.add_argument('--min', type=str, required=True, help='Minimal amount of RAM')
+    parser.add_argument('--max', type=str, required=True, help='Maximal amount of RAM')
     args = parser.parse_args()
 
     log(f'Starting server creation. Parameters: [name : {args.name}, path : {args.path}, software : {software}, minimal RAM : {args.min}, maximal RAM : {args.max} ')
@@ -152,8 +152,20 @@ def main():
         log('creating start')
         with open('start', 'w+') as file:
             file.write(f'#!/bin/bash\nscreen -S {args.name} java -Xmx{args.max} -Xms{args.max} -jar server.jar --nogui')
+        log('start created successfully')
     except:
         error('failed to create start')
+
+    # set eula = true
+
+    try:
+        log('setting eula=true')
+        with open('eula.txt', 'w+') as file:
+            file.write('eula=true')
+        log('eula set to true')
+    except:
+        error('failed to set eula to true')
+
 
     chdir(wd)
     log('operation completed (0)')
