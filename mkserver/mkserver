@@ -14,7 +14,7 @@ from datetime import datetime
 # TODO : Add Progress Bar while downloading server.jar
 # TODO : Add flag to change server.jar name
 # TODO : Add automated eula accepting
-
+# TODO : automatic adding of executable flag to start
 
 # Globals
 
@@ -75,7 +75,7 @@ def download_bungeecord(NAME='server.jar'):
 
     # bungeecords link to latest artifact is always the same
     download_url = 'https://ci.md-5.net/job/BungeeCord/lastSuccessfulBuild/artifact/bootstrap/target/BungeeCord.jar'
-    
+
     # download newest build to specified name   
     r = requests.get(download_url)
     with open(NAME, 'wb+') as file:
@@ -111,7 +111,7 @@ def main():
                         prog = 'mkserver',
                         description = 'setup a minecraft server')
 
-    parser.add_argument('name')                    
+    parser.add_argument('name')
     parser.add_argument('path')
     parser.add_argument('software', choices=software)
     parser.add_argument('--min', type=int, required=True, help='Minimal amount of RAM')
@@ -149,11 +149,11 @@ def main():
     # write start.sh
 
     try:
-        log('creating start.sh')
-        with open('start.sh', 'w+') as file:
+        log('creating start')
+        with open('start', 'w+') as file:
             file.write(f'#!/bin/bash\nscreen -S {args.name} java -Xmx{args.max} -Xms{args.max} -jar server.jar --nogui')
     except:
-        error('failed to create start.sh')
+        error('failed to create start')
 
     chdir(wd)
     log('operation completed (0)')
