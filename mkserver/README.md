@@ -3,6 +3,30 @@
 setup a Minecraft server
 
 ---
+### **Features**
+
++ Automated setup of Paper Servers
++ Automated setup of Velocity Servers
++ Automated setup of Bungeecord Servers
+
+#### **Planned**
+
++ Auto-update 
++ Automatic deployment of:
+    + whitelist.json
+    + banned-players.json/banned-ips.json
+    + ops.json
+    + preset worlds
++ modification of server.properties/spigot.yml via command-line-arguments    
++ Progress bars
+
+---
+### **Known Bugs**
+
++ if no ```M``` or ```G``` is added at the end of the --min/--max argument, the server will not start
++ ```start``` and ```server.jar``` are not automatically flagged as executable
+
+---
 
 ### **Verify the Integrity**
 
@@ -63,9 +87,9 @@ options:
     > Server software which should be used  
 
     > **Possible options:**
-    >   + paper
-    >   + velocity
-    >   + bungeecord 
+    >   + ```paper```
+    >   + ```velocity```
+    >   + ```bungeecord``` 
 
     > Mandatory
 
