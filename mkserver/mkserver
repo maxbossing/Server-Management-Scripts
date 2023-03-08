@@ -5,7 +5,6 @@
 
 import requests
 import argparse
-import stat
 import datetime
 from os import chdir, getcwd, chmod, makedirs
 from shutil import copy
