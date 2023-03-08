@@ -8,6 +8,7 @@ setup a Minecraft server
 + Automated setup of Paper Servers
 + Automated setup of Velocity Servers
 + Automated setup of Bungeecord Servers
++ Automated setup of Purpur Servers
 
 #### **Planned**
 
