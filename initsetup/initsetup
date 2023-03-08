@@ -3,6 +3,10 @@
 # Setup a Server to ensure compatibility with the other scripts
 # Person in charge : Max Bossing [Max#2307, info@maxbossing.de]
 
+# #####################################
+# ##    THIS ONLY WORKS WITH ARCH    ##
+# #####################################
+
 # Constants
 readonly LOG_FILE='/var/log/setup'
 
@@ -61,6 +65,9 @@ main() {
     
     log 'Packages installed successfull'
     echo "$green Packages installed successfull $reset"
+
+    # install python packages
+    sudo pip3 install requests shutil argparse datetime
 
     # done 
     log 'Setup completed'
