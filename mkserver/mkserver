@@ -18,7 +18,7 @@ from datetime import datetime
 
 # Globals
 
-software = ['paper', 'bungeecord', 'velocity']
+software = ['paper', 'bungeecord', 'velocity', 'purpur']
 
 # Methods
 
@@ -83,12 +83,12 @@ def download_bungeecord(NAME='server.jar'):
 
 ##############################################################################
 # Downloads newest Velocity build
-# If nothing specified, it will download the newest 3.1.2-SNAPSHOT build to Server.jar
+# If nothing specified, it will download the newest 3.2.0-SNAPSHOT build to Server.jar
 # ARGUMENTS:
 #   VERSION (velocity Version, optional)
-#   NAME (file name paper should be saved under, optional)
+#   NAME (file name velocty should be saved under, optional)
 ##############################################################################
-def download_velocity(VERSION: str = '1.3.2-SNAPSHOT', NAME: str = 'server.jar') :
+def download_velocity(VERSION: str = '3.2.0-SNAPSHOT', NAME: str = 'server.jar') :
 
     # get all builds of specified version 
     builds = requests.get(f"https://papermc.io/api/v2/projects/velocity/versions/{VERSION}").json()['builds']
@@ -99,6 +99,23 @@ def download_velocity(VERSION: str = '1.3.2-SNAPSHOT', NAME: str = 'server.jar')
     download_url = f'https://papermc.io/api/v2/projects/velocity/versions/{VERSION}/builds/{BUILD}/downloads/velocity-{VERSION}-{BUILD}.jar'
 
     # download newest build to specified name   
+    r = requests.get(download_url)
+    with open(NAME, 'wb+') as file:
+        file.write(r.content)
+
+##############################################################################
+# Downloads newest purpurmc build
+# If nothing specified, it will download the newest 1.19.3 build to Server.jar
+# ARGUMENTS:
+#   VERSION (Minecraft Version, optional)
+#   NAME (file name purpur should be saved under, optional)
+##############################################################################
+def download_purpur(VERSION: str = '1.19.3', NAME: str = 'server.jar'):
+
+    # purpur has provided us an endpoint to download the latest build
+    download_url = requests.get(f'https://api.purpurmc.org/v2/purpur/{VERSION}/latest/download')
+
+        # download newest build to specified name   
     r = requests.get(download_url)
     with open(NAME, 'wb+') as file:
         file.write(r.content)
@@ -142,6 +159,8 @@ def main():
             download_bungeecord()
         elif args.software == 'velocity':
             download_velocity()
+        elif args.software == 'purpur':
+            download_purpur()
         log('Server.jar finished downloading')
     except:
         error('failed to download server.jar')
@@ -159,19 +178,17 @@ def main():
     # set eula = true
 
     try:
-        log('setting eula=true')
+        log('accepting eula')
         with open('eula.txt', 'w+') as file:
             file.write('eula=true')
-        log('eula set to true')
+        log('eula accepted')
     except:
-        error('failed to set eula to true')
+        error('failed to accept eula')
 
 
     chdir(wd)
     log('operation completed (0)')
     
 
-main()
-         
-    
-
+if __name__  == '__main__':
+    main()
